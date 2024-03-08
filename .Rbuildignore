@@ -2,8 +2,10 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^checks$
-^[\.]stl$$
 ^\.github$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+[.]stl$
+^appveyor\.yml$
+^cran-comments\.md$
