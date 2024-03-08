@@ -35,13 +35,17 @@
 #'
 #' @keywords Programming
 #'
-#' @return None.
+#' @return The object returned when [`close`][connections] is used to close the
+#'   connection to `filename`.
 #'
 #' @examples
 #' # Let's do the classic persp() demo plot
-#' x <- seq(-10, 10, length= 100)
+#' x <- seq(-10, 10, length = 100)
 #' y <- x
-#' f <- function(x,y) { r <- sqrt(x^2+y^2); 10 * sin(r)/r }
+#' f <- function(x,y) {
+#'   r <- sqrt(x^2+y^2)
+#'   return(10 * sin(r) / r)
+#' }
 #' z <- outer(x, y, f)
 #' z[is.na(z)] <- 1
 #' \dontrun{
@@ -325,6 +329,6 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 
 	# Write the footer and end the file
 	write(sprintf('endsolid %s', object.name), file=fp)
-	close(fp)
+	return(close(fp))
 }
 

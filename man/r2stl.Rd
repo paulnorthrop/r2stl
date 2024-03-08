@@ -42,7 +42,8 @@ shown on the screen.}
 strictly proper STL format.}
 }
 \value{
-None.
+The object returned when \code{\link[=connections]{close}} is used to close the
+connection to \code{filename}.
 }
 \description{
 \code{r2stl} takes numeric input exactly as with R's normal \code{persp()} function.
@@ -55,9 +56,12 @@ with many programs, for example an open-source option is Meshlab
 }
 \examples{
 # Let's do the classic persp() demo plot
-x <- seq(-10, 10, length= 100)
+x <- seq(-10, 10, length = 100)
 y <- x
-f <- function(x,y) { r <- sqrt(x^2+y^2); 10 * sin(r)/r }
+f <- function(x,y) {
+  r <- sqrt(x^2+y^2)
+  return(10 * sin(r) / r)
+}
 z <- outer(x, y, f)
 z[is.na(z)] <- 1
 \dontrun{
