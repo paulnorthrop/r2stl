@@ -2,5 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-demo
+checks
 *.stl
+docs

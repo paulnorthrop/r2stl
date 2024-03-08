@@ -1,7 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
-^demo$
+^checks$
 ^[\.]stl$$
 ^\.github$
 ^_pkgdown\.yml$
