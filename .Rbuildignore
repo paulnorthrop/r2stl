@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^demo$
 ^[\.]stl$$
+^\.github$

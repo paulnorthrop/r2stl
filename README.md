@@ -3,6 +3,17 @@
 
 # r2stl
 
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/paulnorthrop/r2stl?branch=master&svg=true)](https://ci.appveyor.com/project/paulnorthrop/r2stl)
+[![R-CMD-check](https://github.com/paulnorthrop/r2stl/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/paulnorthrop/r2stl/actions/workflows/R-CMD-check.yaml)
+[![Coverage
+Status](https://codecov.io/github/paulnorthrop/r2stl/coverage.svg?branch=master)](https://app.codecov.io/github/paulnorthrop/r2stl?branch=master)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/r2stl)](https://cran.r-project.org/package=r2stl)
+[![Downloads
+(monthly)](https://cranlogs.r-pkg.org/badges/r2stl?color=brightgreen)](https://cran.r-project.org/package=r2stl)
+[![Downloads
+(total)](https://cranlogs.r-pkg.org/badges/grand-total/r2stl?color=brightgreen)](https://cran.r-project.org/package=r2stl)
+
 ## R package for visualizing data using a 3D printer
 
 The `r2stl` function generates STL files. The command is:
