@@ -51,7 +51,7 @@ The output is a STL (stereolithography) file.
 \details{
 To view and test the STL files before printing them can be done
 with many programs, for example an open-source option is Meshlab
-\url{http://meshlab.sourceforge.net/}.
+\url{https://www.meshlab.net/}.
 }
 \examples{
 # Let's do the classic persp() demo plot
