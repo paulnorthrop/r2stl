@@ -52,7 +52,9 @@
 #' y <- 1:dim(volcano)[2]
 #' r2stl(x, y, z, filename = "volcano.stl", show.persp = TRUE)
 #' @export
-r2stl <- function(x, y, z, filename='3d-R-object.stl', object.name='r2stl-object', z.expand=FALSE, min.height=0.008, show.persp=FALSE, strict.stl=FALSE) {
+r2stl <- function(x, y, z, filename = '3d-R-object.stl',
+                  object.name = 'r2stl-object', z.expand = FALSE,
+                  min.height = 0.008, show.persp = FALSE, strict.stl = FALSE) {
     # NB assuming a 60mm height for printed object, default min.height of
     # 0.008 gives a minimum printed height of 0.5mm
 
