@@ -18,5 +18,6 @@ Description: r2stl, R package for visualizing data using a 3D printer
 License: CC BY-NC-SA 3.0
 Encoding: UTF-8
 Depends: R (>= 2.7.0)
+Imports: graphics
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

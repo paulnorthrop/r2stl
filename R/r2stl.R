@@ -126,7 +126,9 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 
 	# Option to see a surfaceplot of your data as the 3D version is generated
     if (show.persp) {
-    	persp(xx,yy,zz, xlim=c(0,1), ylim=c(0,1), zlim=c(0,1), theta=120, phi=15, col="lightgreen")
+    	graphics::persp(xx, yy, zz, xlim = c(0, 1), ylim = c(0, 1),
+    	                zlim = c(0, 1), theta = 120, phi = 15,
+    	                col = "lightgreen")
     }
 
 	# Output file header
