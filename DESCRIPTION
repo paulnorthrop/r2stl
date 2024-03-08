@@ -1,5 +1,6 @@
 Package: r2stl
 Version: 1.0.1
+Date: 2024-03-08
 Title: r2stl, R package for visualizing data using a 3D printer
 Authors@R: c(person("Ian", "Walker", role = "aut")
 	   , person("Jose'", "Gama", role = "aut")
