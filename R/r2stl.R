@@ -8,8 +8,8 @@
 
 #' Save R data to an STL file
 #'
-#' `r2stl` takes numeric input exactly as with R's normal `persp()` function.
-#' The output is a STL (stereolithography) file.
+#' `r2stl` takes numeric input exactly as with the [`persp`][graphics::persp]
+#' function. The output is a STL (stereolithography) file.
 #'
 #' @param x A numeric vector with the x-coordinates to plot.
 #' @param y A numeric vector with the y-coordinates to plot.
@@ -20,10 +20,10 @@
 #'   specified inside the file. There's probably no point changing it from the
 #'   default.
 #' @param z.expand To force the 3D plot to touch all six faces of the imaginary
-#'   cube that surrounds it, set this parameter to TRUE.
+#'   cube that surrounds it, set this argument to `TRUE`.
 #' @param min.height The minimum height for the printed material.
-#' @param show.persp If set to `TRUE`` then a `persp()` plot of this object is
-#'   shown on the screen.
+#' @param show.persp If set to `TRUE` then a [`persp`][graphics::persp] plot of
+#'   this object is shown on the screen.
 #' @param strict.stl If set to `TRUE` it makes files smaller but isn't
 #'   strictly proper STL format.
 #'
@@ -32,8 +32,6 @@
 #'   \url{https://www.meshlab.net/}.
 #'
 #' @author Ian Walker.
-#'
-#' @keywords Programming
 #'
 #' @return The object returned when [`close`][connections] is used to close the
 #'   connection to `filename`.
@@ -48,19 +46,15 @@
 #' }
 #' z <- outer(x, y, f)
 #' z[is.na(z)] <- 1
-#' \dontrun{
-#' # Not run, to avoid "non-standard things in the check directory" NOTE
-#' r2stl(x, y, z, filename = "lovelyfunction.stl", show.persp = TRUE)
-#' }
+#' file1 <- tempfile(fileext = ".stl")
+#' r2stl(x, y, z, filename = file1, show.persp = TRUE)
 #'
 #' # Now let's look at R's Volcano data
 #' z <- volcano
 #' x <- 1:dim(volcano)[1]
 #' y <- 1:dim(volcano)[2]
-#' \dontrun{
-#' # Not run, to avoid "non-standard things in the check directory" NOTE
-#' r2stl(x, y, z, filename = "volcano.stl", show.persp = TRUE)
-#' }
+#' file2 <- tempfile(fileext = ".stl")
+#' r2stl(x, y, z, filename = file2, show.persp = TRUE)
 #' @export
 r2stl <- function(x, y, z, filename = '3d-R-object.stl',
                   object.name = 'r2stl-object', z.expand = FALSE,

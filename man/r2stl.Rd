@@ -31,12 +31,12 @@ specified inside the file. There's probably no point changing it from the
 default.}
 
 \item{z.expand}{To force the 3D plot to touch all six faces of the imaginary
-cube that surrounds it, set this parameter to TRUE.}
+cube that surrounds it, set this argument to \code{TRUE}.}
 
 \item{min.height}{The minimum height for the printed material.}
 
-\item{show.persp}{If set to \verb{TRUE`` then a }persp()` plot of this object is
-shown on the screen.}
+\item{show.persp}{If set to \code{TRUE} then a \code{\link[graphics:persp]{persp}} plot of
+this object is shown on the screen.}
 
 \item{strict.stl}{If set to \code{TRUE} it makes files smaller but isn't
 strictly proper STL format.}
@@ -46,8 +46,8 @@ The object returned when \code{\link[=connections]{close}} is used to close the
 connection to \code{filename}.
 }
 \description{
-\code{r2stl} takes numeric input exactly as with R's normal \code{persp()} function.
-The output is a STL (stereolithography) file.
+\code{r2stl} takes numeric input exactly as with the \code{\link[graphics:persp]{persp}}
+function. The output is a STL (stereolithography) file.
 }
 \details{
 To view and test the STL files before printing them can be done
@@ -64,21 +64,16 @@ f <- function(x,y) {
 }
 z <- outer(x, y, f)
 z[is.na(z)] <- 1
-\dontrun{
-# Not run, to avoid "non-standard things in the check directory" NOTE
-r2stl(x, y, z, filename = "lovelyfunction.stl", show.persp = TRUE)
-}
+file1 <- tempfile(fileext = ".stl")
+r2stl(x, y, z, filename = file1, show.persp = TRUE)
 
 # Now let's look at R's Volcano data
 z <- volcano
 x <- 1:dim(volcano)[1]
 y <- 1:dim(volcano)[2]
-\dontrun{
-# Not run, to avoid "non-standard things in the check directory" NOTE
-r2stl(x, y, z, filename = "volcano.stl", show.persp = TRUE)
-}
+file2 <- tempfile(fileext = ".stl")
+r2stl(x, y, z, filename = file2, show.persp = TRUE)
 }
 \author{
 Ian Walker.
 }
-\keyword{Programming}
