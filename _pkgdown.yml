@@ -1,0 +1,14 @@
+destination: docs
+
+development:
+  mode: unreleased
+
+template:
+  params:
+    bootswatch: paper
+
+reference:
+  - title: Save R data to an STL file
+    desc: ~
+    contents:
+      - "r2stl"
