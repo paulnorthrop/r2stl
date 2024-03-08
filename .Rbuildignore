@@ -1,5 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^README\.Rmd$
 ^demo$
 ^[\.]stl$$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

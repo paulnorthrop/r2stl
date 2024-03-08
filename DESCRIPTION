@@ -15,7 +15,7 @@ Description: r2stl, R package for visualizing data using a 3D printer
         elevation maps (DEMs), to bridge the gap between mathematical
         tools and rapid prototyping, and many more.  Ian Walker created
         the function "r2stl" and Jose' Gama assembled the package.
-License: CC BY-NC-SA 3.0
+License: CC BY-NC-SA 4.0
 Encoding: UTF-8
 Depends: R (>= 2.7.0)
 Imports: graphics
