@@ -1,0 +1,67 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# r2stl
+
+## R package for visualizing data using a 3D printer
+
+The `r2stl` function generates STL files. The command is:
+
+``` r
+r2stl(x, y, z, filename = '3d-R-object.stl', object.name = 'r2stl-object', 
+      z.expand = FALSE, min.height = 0.008, show.persp = FALSE, 
+      strict.stl = FALSE)
+```
+
+- `x`, `y` and `z` should be vectors of numbers, exactly as with R’s
+  normal `persp()` plot. `x` and `y` represent a flat grid and `z`
+  represents heights above this grid
+
+- `filename` is pretty obvious, I hope
+
+- `object.name` The STL file format requires the object that is being
+  described to have a name specified inside the file. It’s unlikely
+  anybody will ever see this, so there’s probably no point changing it
+  from the default
+
+- `z.expand` By default, `r2stl()` normalizes each axis so it runs from
+  0 to 1 (this is an attempt to give you an object that is agnostic with
+  regard to how large it will eventually be printed). Normally, the code
+  then rescales the z axis back down so its proportions relative to x
+  and y are what they were originally. If, for some reason, you want
+  your 3D plot to touch all six faces of the imaginary cube that
+  surrounds it, set this parameter to TRUE
+
+- `min.height` Your printed model would fall apart if some parts of it
+  had z values of zero, as this would mean zero material is laid down in
+  those parts of the plot. This parameter therefore provides a minimum
+  height for the printed material. The default of 0.008 ensures that,
+  when printed, no part of your object is thinner than around 0.5 mm,
+  assuming that it is printed inside a 60 mm x 60 mm x 60 mm cube.
+  Recall that the z axis gets scaled from 0 to 1. If you are printing a
+  60mm-tall object then a z-value of 1 represents 60mm. The formula is
+  min.height=min.mm/overall.mm, so if we want a minimum printed
+  thickness of 0.5mm and the overall height of your object will be 60mm,
+  0.5/60 = 0.008, which is the default. If you want the same minimum
+  printed thickness of 0.5mm but want to print your object to 100mm,
+  this parameter would be set to 0.5/100 = 0.005
+
+- `show.persp` Do you want to see a `persp()` plot of this object on
+  your screen as the STL is being generated? Default is `FALSE`
+
+- `strict.stl` To make files smaller, this code cheats and simply
+  describes the entire rectangular base of your object as two huge
+  triangles. This seems to work fine for printing, but isn’t strictly
+  proper STL format. Set this to TRUE if you want the base of your
+  object described as a large number of triangles and don’t mind larger
+  files
+
+To view and test your STL files before you print them, you can use
+various programs. I have had good experiences with the free, open-source
+Meshlab, which even has iPhone and Android versions so you can let
+people interact with your data even when you’re in the pub. Even if all
+you ever do is show people your 3D plots using Meshlab, I believe
+`r2stl()` still offers a useful service, as it makes viewing data far
+more interactive than static `persp()` plots. To actually get your hands
+on a printer, you might try your local school - apparently lots of
+schools have got rapid prototypers these days.
