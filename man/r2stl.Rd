@@ -21,7 +21,8 @@ r2stl(
 
 \item{y}{A numeric vector with the y-coordinates to plot.}
 
-\item{z}{A numeric vector with the z-coordinates to plot.}
+\item{z}{A numeric \code{length(x)} by \code{length(y)} matrix with the z-coordinates
+to plot.}
 
 \item{filename}{The STL filename.}
 

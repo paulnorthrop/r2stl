@@ -7,35 +7,36 @@
 # represent a grid and z gives heights above this grid
 
 #' Save R data to an STL file
-#' 
-#' `r2stl` takes numeric input exactly as with R's normal `persp()` function. 
+#'
+#' `r2stl` takes numeric input exactly as with R's normal `persp()` function.
 #' The output is a STL (stereolithography) file.
 #'
 #' @param x A numeric vector with the x-coordinates to plot.
 #' @param y A numeric vector with the y-coordinates to plot.
-#' @param z A numeric vector with the z-coordinates to plot.
+#' @param z A numeric `length(x)` by `length(y)` matrix with the z-coordinates
+#'   to plot.
 #' @param filename The STL filename.
-#' @param object.name The object that is being described must have a name 
-#'   specified inside the file. There's probably no point changing it from the 
+#' @param object.name The object that is being described must have a name
+#'   specified inside the file. There's probably no point changing it from the
 #'   default.
-#' @param z.expand To force the 3D plot to touch all six faces of the imaginary 
+#' @param z.expand To force the 3D plot to touch all six faces of the imaginary
 #'   cube that surrounds it, set this parameter to TRUE.
 #' @param min.height The minimum height for the printed material.
-#' @param show.persp If set to `TRUE`` then a `persp()` plot of this object is 
+#' @param show.persp If set to `TRUE`` then a `persp()` plot of this object is
 #'   shown on the screen.
-#' @param strict.stl If set to `TRUE` it makes files smaller but isn't 
+#' @param strict.stl If set to `TRUE` it makes files smaller but isn't
 #'   strictly proper STL format.
 #'
-#' @details To view and test the STL files before printing them can be done 
-#'   with many programs, for example an open-source option is Meshlab 
-#'   \url{http://meshlab.sourceforge.net/}.   
+#' @details To view and test the STL files before printing them can be done
+#'   with many programs, for example an open-source option is Meshlab
+#'   \url{http://meshlab.sourceforge.net/}.
 #'
 #' @author Ian Walker.
-#' 
+#'
 #' @keywords Programming
-#' 
-#' @return None.   
-#' 
+#'
+#' @return None.
+#'
 #' @examples
 #' # Let's do the classic persp() demo plot
 #' x <- seq(-10, 10, length= 100)
@@ -52,10 +53,10 @@
 #' r2stl(x, y, z, filename = "volcano.stl", show.persp = TRUE)
 #' @export
 r2stl <- function(x, y, z, filename='3d-R-object.stl', object.name='r2stl-object', z.expand=FALSE, min.height=0.008, show.persp=FALSE, strict.stl=FALSE) {
-    # NB assuming a 60mm height for printed object, default min.height of 
+    # NB assuming a 60mm height for printed object, default min.height of
     # 0.008 gives a minimum printed height of 0.5mm
-    
-    # *Auto setting* If min.height >= 1, we interpret this not as the minimum 
+
+    # *Auto setting* If min.height >= 1, we interpret this not as the minimum
     # proportion of the object to be printed, but as the height
     # of the printed object in mm, and provide a 0.5 mm minimum
     # (0.5 mm seems a common minimum recommended height for many 3D printers)
@@ -78,13 +79,13 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
     if (length(x) < 3 | length(y) < 3 | length(z) < 3) {
         stop("You do not appear to have enough data for a plot to be generated")
     }
-    
+
     ##
     # Define some functions to be used later
     ##
 
 	# function to normalize scores on a scale from 0 to 1
-	normit <- function(x) { 
+	normit <- function(x) {
 		xprime <- (x - min(x, na.rm=TRUE)) / ( max(x, na.rm=TRUE) - min(x, na.rm=TRUE) )
 		return(xprime)
 	}
@@ -95,11 +96,11 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
         xprime[xprime < min.height] <- min.height
         return(xprime)
     }
-    
+
     ##
     # Enough functions, let's get processing
     ##
-    
+
 	# open file for writing
 	fp <- file(filename, open="w")
     if (!fp) { stop("There was a problem opening the file for writing") }
@@ -108,16 +109,16 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 	zz <- normit(z)
 	xx <- normit(x)
 	yy <- normit(y)
-	
-	# z range has been normalized to fill the same 0 to 1 range as the x and y data. 
+
+	# z range has been normalized to fill the same 0 to 1 range as the x and y data.
     # This is necessary to get everything onto a size-neutral 0 to 1 range, but
     # often messes up prints. So if required, rescale the z scores back to the original data range
-	if(!z.expand) { 
-		zz <- zz * ( (max(z) - min(z)) / max(z) ) 
+	if(!z.expand) {
+		zz <- zz * ( (max(z) - min(z)) / max(z) )
 		if (max(zz) > 1 | min(zz) < 0) zz <- normit(zz) # if -ve numbers have messed things
 	}
 
-    # to avoid trying to print infintesimally thin surfaces, provide a minimum height in 
+    # to avoid trying to print infintesimally thin surfaces, provide a minimum height in
     # the z data
     if (min.height) { # gives the option to set it to FALSE. Don't know why you would though
         zz <- correct.min(zz)
@@ -127,10 +128,10 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
     if (show.persp) {
     	persp(xx,yy,zz, xlim=c(0,1), ylim=c(0,1), zlim=c(0,1), theta=120, phi=15, col="lightgreen")
     }
-    
-	# Output file header 	
+
+	# Output file header
 	write(sprintf('solid %s created using r2stl.r by Ian Walker, University of Bath', object.name), file=fp)
-	
+
 	###
 	# Begin the six faces
 	###
@@ -140,11 +141,11 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 	#
 	# The run along each face divides the rectangles in the data into triangles.
 	# The two triangles in each rectangle are arbitrarily called A and B. On the side
-	# faces, A is the lower triangle on the z axis and B the upper; on the top and 
-	# bottom faces, A is the triangle lower on the y axis. 
-		
+	# faces, A is the lower triangle on the z axis and B the upper; on the top and
+	# bottom faces, A is the triangle lower on the y axis.
+
 	# First side face, y is fixed at 0 and x increments
-	for (i in 1:(length(xx)-1)) { 
+	for (i in 1:(length(xx)-1)) {
 		# to length-1 as we triangulate from a point to its next neighbour and so
 		# the penultimate step will take us to the far edge
 
@@ -158,7 +159,7 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 		write(sprintf('      vertex %f %f %f', xx[i+1], j, zz[i+1, j+1]), file=fp)
 		write('    endloop', file=fp)
 		write('  endfacet', file=fp)
-		
+
 		#triangle B
 		write('  facet normal 0.0 -1.0 0.0', file=fp)
 		write('    outer loop', file=fp)
@@ -168,10 +169,10 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 		write('    endloop', file=fp)
 		write('  endfacet', file=fp)
 	}
-	
+
 	# Second side face, x is fixed at 0 and y increments
-	for (i in 1:(length(yy)-1) ) { 
-		j = 0			
+	for (i in 1:(length(yy)-1) ) {
+		j = 0
 
 		# triangle A
 		write('  facet normal -1.0 0.0 0.0', file=fp)
@@ -181,7 +182,7 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 		write(sprintf('      vertex %f %f %f', j, yy[i+1], 0), file=fp)
 		write('    endloop', file=fp)
 		write('  endfacet', file=fp)
-		
+
 		#triangle B
 		write('  facet normal -1.0 0.0 0.0', file=fp)
 		write('    outer loop', file=fp)
@@ -193,7 +194,7 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 	}
 
 	# Third side face, y is fixed at its max value and x increments
-	for (i in 1:(length(xx)-1) ) { 
+	for (i in 1:(length(xx)-1) ) {
 		j = 1 #normalized highest value
 		k = length(yy) # actual highest value (for addressing the array)
 
@@ -205,7 +206,7 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 		write(sprintf('      vertex %f %f %f', xx[i+1], j, 0), file=fp)
 		write('    endloop', file=fp)
 		write('  endfacet', file=fp)
-		
+
 		#triangle B
 		write('  facet normal 0.0 1.0 0.0', file=fp)
 		write('    outer loop', file=fp)
@@ -215,10 +216,10 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 		write('    endloop', file=fp)
 		write('  endfacet', file=fp)
 	}
-	
+
 	# Fourth side face, x is fixed at its max value and y increments
-	for (i in 1:(length(yy)-1) ) { 
-		j = 1		
+	for (i in 1:(length(yy)-1) ) {
+		j = 1
 		k = length(xx)
 
 		# triangle A
@@ -229,7 +230,7 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 		write(sprintf('      vertex %f %f %f', j, yy[i+1], zz[k, i+1]), file=fp)
 		write('    endloop', file=fp)
 		write('  endfacet', file=fp)
-		
+
 		#triangle B
 		write('  facet normal 1.0 0.0 0.0', file=fp)
 		write('    outer loop', file=fp)
@@ -243,7 +244,7 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 	# top face - run through the x by y grid as seen from above
 	for (i in 1:(length(xx)-1) ) {
 		for (j in 1:(length(yy)-1) ) {
-	
+
 			# triangle A
 			write('  facet normal 0.0 0.0 1.0', file=fp)
 			write('    outer loop', file=fp)
@@ -252,7 +253,7 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 			write(sprintf('      vertex %f %f %f', xx[i+1], yy[j+1], zz[i+1,j+1]), file=fp)
 			write('    endloop', file=fp)
 			write('  endfacet', file=fp)
-			
+
 			#triangle B
 			write('  facet normal 0.0 0.0 1.0', file=fp)
 			write('    outer loop', file=fp)
@@ -263,24 +264,24 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 			write('  endfacet', file=fp)
 		}
 	}
-	
-	# Bottom face. This is always a flat rectangle so we can cheat by making it two 
+
+	# Bottom face. This is always a flat rectangle so we can cheat by making it two
 	# massive triangles. But as this isn't strict STL format we offer a fully-
 	# triangulated version of the grid, albeit at the cost of larger files
 	if (!strict.stl) {
 		write('  facet normal 0.0 0.0 -1.0', file=fp)
 		write('    outer loop', file=fp)
 		write(sprintf('      vertex %f %f %f', 0, 0, 0), file=fp)
-		write(sprintf('      vertex %f %f %f', 1, 1, 0), file=fp)	
+		write(sprintf('      vertex %f %f %f', 1, 1, 0), file=fp)
 		write(sprintf('      vertex %f %f %f', 1, 0, 0), file=fp)
 		write('    endloop', file=fp)
 		write('  endfacet', file=fp)
-	
+
 		write('  facet normal 0.0 0.0 -1.0', file=fp)
 		write('    outer loop', file=fp)
 		write(sprintf('      vertex %f %f %f', 0, 0, 0), file=fp)
 		write(sprintf('      vertex %f %f %f', 0, 1, 0), file=fp)
-		write(sprintf('      vertex %f %f %f', 1, 1, 0), file=fp)	
+		write(sprintf('      vertex %f %f %f', 1, 1, 0), file=fp)
 		write('    endloop', file=fp)
 		write('  endfacet', file=fp)
 	} else { # copy of top-face code, with all z values set to zero
@@ -295,7 +296,7 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 				write(sprintf('      vertex %f %f %f', xx[i+1], yy[j+1], 0), file=fp)
 				write('    endloop', file=fp)
 				write('  endfacet', file=fp)
-			
+
 				#triangle B
 				write('  facet normal 0.0 0.0 -1.0', file=fp)
 				write('    outer loop', file=fp)
@@ -306,8 +307,8 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
 				write('  endfacet', file=fp)
 			}
 		}
-	} 
-	
+	}
+
 	###
 	# End of the six faces
 	###
