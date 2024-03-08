@@ -60,13 +60,19 @@ y <- x
 f <- function(x,y) { r <- sqrt(x^2+y^2); 10 * sin(r)/r }
 z <- outer(x, y, f)
 z[is.na(z)] <- 1
+\dontrun{
+# Not run, to avoid "non-standard things in the check directory" NOTE
 r2stl(x, y, z, filename = "lovelyfunction.stl", show.persp = TRUE)
+}
 
 # Now let's look at R's Volcano data
 z <- volcano
 x <- 1:dim(volcano)[1]
 y <- 1:dim(volcano)[2]
+\dontrun{
+# Not run, to avoid "non-standard things in the check directory" NOTE
 r2stl(x, y, z, filename = "volcano.stl", show.persp = TRUE)
+}
 }
 \author{
 Ian Walker.
