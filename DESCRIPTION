@@ -1,6 +1,6 @@
 Package: r2stl
 Version: 1.0.2
-Date: 2024-03-11
+Date: 2024-03-12
 Title: Visualizing Data using a 3D Printer
 Authors@R: c(person("Ian", "Walker", role = "aut")
 	   , person("Jose'", "Gama", role = "aut")
