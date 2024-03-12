@@ -12,17 +12,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Visualizing Data using a 3D Printer">
-<meta property="og:description" content="This package converts R data to STL (stereolithography) files
-  that can be used to feed a 3-dimensional printer.  The
-  3-dimensional output from an R function can be materialized
-  into a solid surface in a plastic material, therefore allowing
-  more detailed examination. There are many possible uses for
-  this new R tool, such as to examine mathematical expressions
-  with very irregular shapes, to aid teaching people with
-  impaired vision, to create raised relief maps from digital
-  elevation maps (DEMs), to bridge the gap between mathematical
-  tools and rapid prototyping, and many more.  Ian Walker created
-  the function &quot;r2stl&quot; and Jose' Gama assembled the package.">
+<meta property="og:description" content="Converts data to STL (stereolithography) files
+    that can be used to feed a 3-dimensional printer.  The
+    3-dimensional output from a function can be materialized
+    into a solid surface in a plastic material, therefore allowing
+    more detailed examination. There are many possible uses for
+    this new tool, such as to examine mathematical expressions
+    with very irregular shapes, to aid teaching people with
+    impaired vision, to create raised relief maps from digital
+    elevation maps (DEMs), to bridge the gap between mathematical
+    tools and rapid prototyping, and many more.  Ian Walker created
+    the function r2stl() and Jose' Gama assembled the package.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">r2stl</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.2</span>
       </span>
     </div>
 
@@ -78,7 +78,7 @@
 <div class="section level1">
 <div class="page-header"><h1 id="r2stl">r2stl<a class="anchor" aria-label="anchor" href="#r2stl"></a>
 </h1></div>
-<p><a href="https://ci.appveyor.com/project/paulnorthrop/r2stl" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/paulnorthrop/r2stl?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://github.com/paulnorthrop/r2stl/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/paulnorthrop/r2stl/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://cran.r-project.org/package=r2stl" class="external-link"><img src="https://www.r-pkg.org/badges/version/r2stl" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/package=r2stl" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/r2stl?color=brightgreen" alt="Downloads (monthly)"></a> <a href="https://cran.r-project.org/package=r2stl" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/r2stl?color=brightgreen" alt="Downloads (total)"></a></p>
+<p><a href="https://ci.appveyor.com/project/paulnorthrop/r2stl/branch/main" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/99jojhgk9t4agdmv/branch/main?svg=true" alt="Appveyor Build status"></a> <a href="https://github.com/paulnorthrop/r2stl/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/paulnorthrop/r2stl/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://cran.r-project.org/package=r2stl" class="external-link"><img src="https://www.r-pkg.org/badges/version/r2stl" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/package=r2stl" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/r2stl?color=brightgreen" alt="Downloads (monthly)"></a> <a href="https://cran.r-project.org/package=r2stl" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/r2stl?color=brightgreen" alt="Downloads (total)"></a></p>
 <div class="section level2">
 <h2 id="r-package-for-visualizing-data-using-a-3d-printer">R package for visualizing data using a 3D printer<a class="anchor" aria-label="anchor" href="#r-package-for-visualizing-data-using-a-3d-printer"></a>
 </h2>
@@ -88,13 +88,13 @@
 <span>      z.expand <span class="op">=</span> <span class="cn">FALSE</span>, min.height <span class="op">=</span> <span class="fl">0.008</span>, show.persp <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>      strict.stl <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <ul>
-<li><p><code>x</code>, <code>y</code> and <code>z</code> should be vectors of numbers, exactly as with R’s normal <code><a href="https://rdrr.io/r/graphics/persp.html" class="external-link">persp()</a></code> plot. <code>x</code> and <code>y</code> represent a flat grid and <code>z</code> represents heights above this grid</p></li>
-<li><p><code>filename</code> is pretty obvious, I hope</p></li>
-<li><p><code>object.name</code> The STL file format requires the object that is being described to have a name specified inside the file. It’s unlikely anybody will ever see this, so there’s probably no point changing it from the default</p></li>
-<li><p><code>z.expand</code> By default, <code><a href="reference/r2stl.html">r2stl()</a></code> normalizes each axis so it runs from 0 to 1 (this is an attempt to give you an object that is agnostic with regard to how large it will eventually be printed). Normally, the code then rescales the z axis back down so its proportions relative to x and y are what they were originally. If, for some reason, you want your 3D plot to touch all six faces of the imaginary cube that surrounds it, set this parameter to TRUE</p></li>
-<li><p><code>min.height</code> Your printed model would fall apart if some parts of it had z values of zero, as this would mean zero material is laid down in those parts of the plot. This parameter therefore provides a minimum height for the printed material. The default of 0.008 ensures that, when printed, no part of your object is thinner than around 0.5 mm, assuming that it is printed inside a 60 mm x 60 mm x 60 mm cube. Recall that the z axis gets scaled from 0 to 1. If you are printing a 60mm-tall object then a z-value of 1 represents 60mm. The formula is min.height=min.mm/overall.mm, so if we want a minimum printed thickness of 0.5mm and the overall height of your object will be 60mm, 0.5/60 = 0.008, which is the default. If you want the same minimum printed thickness of 0.5mm but want to print your object to 100mm, this parameter would be set to 0.5/100 = 0.005</p></li>
-<li><p><code>show.persp</code> Do you want to see a <code><a href="https://rdrr.io/r/graphics/persp.html" class="external-link">persp()</a></code> plot of this object on your screen as the STL is being generated? Default is <code>FALSE</code></p></li>
-<li><p><code>strict.stl</code> To make files smaller, this code cheats and simply describes the entire rectangular base of your object as two huge triangles. This seems to work fine for printing, but isn’t strictly proper STL format. Set this to TRUE if you want the base of your object described as a large number of triangles and don’t mind larger files</p></li>
+<li><p><code>x</code>, <code>y</code> and <code>z</code> should be vectors of numbers, exactly as with R’s normal <code><a href="https://rdrr.io/r/graphics/persp.html" class="external-link">persp()</a></code> plot. <code>x</code> and <code>y</code> represent a flat grid and <code>z</code> represents heights above this grid.</p></li>
+<li><p><code>filename</code> is pretty obvious, I hope.</p></li>
+<li><p><code>object.name</code> The STL file format requires the object that is being described to have a name specified inside the file. It’s unlikely anybody will ever see this, so there’s probably no point changing it from the default.</p></li>
+<li><p><code>z.expand</code> By default, <code><a href="reference/r2stl.html">r2stl()</a></code> normalizes each axis so it runs from 0 to 1 (this is an attempt to give you an object that is agnostic with regard to how large it will eventually be printed). Normally, the code then rescales the z axis back down so its proportions relative to x and y are what they were originally. If, for some reason, you want your 3D plot to touch all six faces of the imaginary cube that surrounds it, set this parameter to <code>TRUE</code>.</p></li>
+<li><p><code>min.height</code> Your printed model would fall apart if some parts of it had z values of zero, as this would mean zero material is laid down in those parts of the plot. This parameter therefore provides a minimum height for the printed material. The default of 0.008 ensures that, when printed, no part of your object is thinner than around 0.5 mm, assuming that it is printed inside a 60 mm x 60 mm x 60 mm cube. Recall that the z axis gets scaled from 0 to 1. If you are printing a 60mm-tall object then a z-value of 1 represents 60mm. The formula is min.height = min.mm / overall.mm, so if we want a minimum printed thickness of 0.5mm and the overall height of your object will be 60mm, 0.5/60 = 0.008, which is the default. If you want the same minimum printed thickness of 0.5mm but want to print your object to 100mm, this parameter would be set to 0.5/100 = 0.005.</p></li>
+<li><p><code>show.persp</code> Do you want to see a <code><a href="https://rdrr.io/r/graphics/persp.html" class="external-link">persp()</a></code> plot of this object on your screen as the STL is being generated? Default is <code>FALSE</code>.</p></li>
+<li><p><code>strict.stl</code> To make files smaller, this code cheats and simply describes the entire rectangular base of your object as two huge triangles. This seems to work fine for printing, but isn’t strictly proper STL format. Set this to <code>TRUE</code> if you want the base of your object described as a large number of triangles and don’t mind larger files.</p></li>
 </ul>
 <p>To view and test your STL files before you print them, you can use various programs. I have had good experiences with the free, open-source Meshlab, which even has iPhone and Android versions so you can let people interact with your data even when you’re in the pub. Even if all you ever do is show people your 3D plots using Meshlab, I believe <code><a href="reference/r2stl.html">r2stl()</a></code> still offers a useful service, as it makes viewing data far more interactive than static <code><a href="https://rdrr.io/r/graphics/persp.html" class="external-link">persp()</a></code> plots. To actually get your hands on a printer, you might try your local school - apparently lots of schools have got rapid prototypers these days.</p>
 </div>
