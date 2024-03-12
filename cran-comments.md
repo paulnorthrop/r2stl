@@ -1,6 +1,6 @@
 ## Resubmission
 
-This is a resubmission. I have fixed the issues in the DESCRIPTION file in v1.0.1.
+This is a resubmission. I have replaced the non-FOSS licence (CC BY-NC-SA 4.0) with CC BY-SA 4.0.
 
 ## R CMD check results
 

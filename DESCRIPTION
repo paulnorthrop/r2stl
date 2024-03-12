@@ -1,5 +1,5 @@
 Package: r2stl
-Version: 1.0.2
+Version: 1.0.3
 Date: 2024-03-12
 Title: Visualizing Data using a 3D Printer
 Authors@R: c(person("Ian", "Walker", role = "aut")
@@ -17,8 +17,7 @@ Description: Converts data to STL (stereolithography) files
     elevation maps (DEMs), to bridge the gap between mathematical
     tools and rapid prototyping, and many more.  Ian Walker created
     the function r2stl() and Jose' Gama assembled the package.
-License: CC BY-NC-SA 4.0
-License_restricts_use: yes
+License: CC BY-SA 4.0
 Encoding: UTF-8
 Depends: R (>= 2.7.0)
 Imports: graphics

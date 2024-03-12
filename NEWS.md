@@ -1,4 +1,4 @@
-# r2stl 1.0.2
+# r2stl 1.0.3
 
 * New maintainer: Paul Northrop
 * Fixed NOTEs in the CRAN package Check Results
