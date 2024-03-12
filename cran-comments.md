@@ -1,3 +1,7 @@
+## Resubmission
+
+This is a resubmission. I have fixed the issues in the DESCRIPTION file in v1.0.1.
+
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
