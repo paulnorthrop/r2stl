@@ -1,10 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# r2stl
+# r2stl <a href="https://paulnorthrop.github.io/r2stl/"><img src="man/figures/r2stl_logo.png" align="right" style="float:right; height:150px;" alt="r2stl logo"/></a>
 
-[![Appveyor Build
-status](https://ci.appveyor.com/api/projects/status/99jojhgk9t4agdmv/branch/main?svg=true)](https://ci.appveyor.com/project/paulnorthrop/r2stl/branch/main)
 [![R-CMD-check](https://github.com/paulnorthrop/r2stl/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/paulnorthrop/r2stl/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/r2stl)](https://cran.r-project.org/package=r2stl)
 [![Downloads
