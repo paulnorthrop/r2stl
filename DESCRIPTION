@@ -1,6 +1,6 @@
 Package: r2stl
 Version: 1.0.3
-Date: 2024-03-12
+Date: 2025-12-30
 Title: Visualizing Data using a 3D Printer
 Authors@R: c(person("Ian", "Walker", role = "aut")
 	   , person("Jose'", "Gama", role = "aut")
@@ -22,6 +22,6 @@ Encoding: UTF-8
 Depends: R (>= 2.7.0)
 Imports: graphics
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 URL: https://github.com/paulnorthrop/r2stl, https://paulnorthrop.github.io/r2stl/
 BugReports: https://github.com/paulnorthrop/r2stl/issues
