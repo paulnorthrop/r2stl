@@ -7,6 +7,5 @@
 ^docs$
 ^pkgdown$
 [.]stl$
-^appveyor\.yml$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
