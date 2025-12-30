@@ -1,3 +1,7 @@
+# r2stl 1.0.3.9000
+
+* Added `...` argument to `r2stl()` for arguments passed to `graphics::persp()` when `show.persp = TRUE`.
+
 # r2stl 1.0.3
 
 * New maintainer: Paul Northrop
