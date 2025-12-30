@@ -26,6 +26,9 @@
 #'   this object is shown on the screen.
 #' @param strict.stl If set to `TRUE` it makes files smaller but isn't
 #'   strictly proper STL format.
+#' @param ... Additional arguments to be passed to [`persp`][graphics::persp].
+#'   The defaults are `xlim = c(0, 1)`, `ylim = c(0, 1)`,
+#'   `zlim = c(0, 1)`, `theta = 120`, `phi = 15` and `col = "lightgreen"`.
 #'
 #' @details To view and test the STL files before printing them can be done
 #'   with many programs, for example an open-source option is Meshlab
@@ -58,7 +61,8 @@
 #' @export
 r2stl <- function(x, y, z, filename = '3d-R-object.stl',
                   object.name = 'r2stl-object', z.expand = FALSE,
-                  min.height = 0.008, show.persp = FALSE, strict.stl = FALSE) {
+                  min.height = 0.008, show.persp = FALSE, strict.stl = FALSE,
+                  ...) {
     # NB assuming a 60mm height for printed object, default min.height of
     # 0.008 gives a minimum printed height of 0.5mm
 
@@ -131,11 +135,16 @@ if (!is.logical(strict.stl)) stop('Argument <<strict.stl>> should be a boolean')
     }
 
 	# Option to see a surfaceplot of your data as the 3D version is generated
-    if (show.persp) {
-    	graphics::persp(xx, yy, zz, xlim = c(0, 1), ylim = c(0, 1),
-    	                zlim = c(0, 1), theta = 120, phi = 15,
-    	                col = "lightgreen")
-    }
+	if (show.persp) {
+	  persp_fn <- function(x, y, z, ...,
+	                       xlim = c(0, 1), ylim = c(0, 1), zlim = c(0, 1),
+	                       theta = 120, phi = 15, col = "lightgreen") {
+	    graphics::persp(x = x, y = y, z = z, ...,
+	                    xlim = xlim, ylim = ylim, zlim = zlim,
+	                    theta = theta, phi = phi, col = col)
+	  }
+	  persp_fn(xx, yy, zz, ...)
+	}
 
 	# Output file header
 	write(sprintf('solid %s created using r2stl.r by Ian Walker, University of Bath', object.name), file=fp)

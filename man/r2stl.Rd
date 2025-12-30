@@ -13,7 +13,8 @@ r2stl(
   z.expand = FALSE,
   min.height = 0.008,
   show.persp = FALSE,
-  strict.stl = FALSE
+  strict.stl = FALSE,
+  ...
 )
 }
 \arguments{
@@ -40,6 +41,10 @@ this object is shown on the screen.}
 
 \item{strict.stl}{If set to \code{TRUE} it makes files smaller but isn't
 strictly proper STL format.}
+
+\item{...}{Additional arguments to be passed to \code{\link[graphics:persp]{persp}}.
+The defaults are \code{xlim = c(0, 1)}, \code{ylim = c(0, 1)},
+\code{zlim = c(0, 1)}, \code{theta = 120}, \code{phi = 15} and \code{col = "lightgreen"}.}
 }
 \value{
 The object returned when \code{\link[=connections]{close}} is used to close the
